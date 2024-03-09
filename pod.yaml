@@ -7,12 +7,13 @@ spec:
   containers:
   - name: homework
     ports:
-    - containerPort: 80
-      hostPort: 8000
+    - containerPort: 8000
     image: nginx:latest
     volumeMounts:
       - mountPath: /homework
         name: shared-v-homework
+      - name: nginx-configs
+        mountPath: /etc/nginx/conf.d
     lifecycle:
       postStart:
         exec:
@@ -31,3 +32,6 @@ spec:
   - name: shared-v-homework
     emptyDir:
       sizeLimit: 100Mi
+  - name: nginx-config
+    configMap:
+      name: nginx-config
