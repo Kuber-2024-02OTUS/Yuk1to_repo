@@ -12,7 +12,7 @@ spec:
     volumeMounts:
       - mountPath: /homework
         name: shared-v-homework
-      - name: nginx-configs
+      - name: nginx-config
         mountPath: /etc/nginx/conf.d
     lifecycle:
       preStop:
